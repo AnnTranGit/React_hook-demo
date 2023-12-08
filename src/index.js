@@ -1,17 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import HomeTemplate from './templates/HomeTemplate';
+import Home from './pages/Home';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import UseStateDemo from './pages/hooks/UseStateDemo';
+import ChangeProfile from './pages/hooks/EXUseState/ChangeProfile';
+import UseEffect_DidMount from './pages/hooks/UseEffectDemo/UseEffect_DidMount';
+import UseEffect_DidUpdate from './pages/hooks/UseEffectDemo/UseEffect_DidUpdate';
+import UseEffect_Unmout from './pages/hooks/UseEffectDemo/UseEffect_Unmout';
+import ExChatDemo from './pages/hooks/ExHookRedux/ExChatDemo';
+import ExChangeFontSize from './pages/hooks/ExHookRedux/ExChangeFontSize';
+import CRUDProduct from './pages/hooks/ExHookRedux/CRUDProduct';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+  <div>
+    <Provider store={store}>
+    <BrowserRouter>
+    <Routes>
+      <Route path='' element={<HomeTemplate/>}>
+        <Route index element={<Home/>}></Route>
+        <Route path='use-state-demo' element={<UseStateDemo/>}></Route>
+        <Route path='use-state-change-profile' element={<ChangeProfile/>}></Route>
+        <Route path='use-effect-didmount' element={<UseEffect_DidMount/>}></Route>
+        <Route path='use-effect-didupdate' element={<UseEffect_DidUpdate/>}></Route>
+        <Route path='use-effect-unmount' element={<UseEffect_Unmout/>}></Route>
+        <Route path='use-redux-demo-chat' element={<ExChatDemo/>}></Route>
+        <Route path='use-redux-demo-change-font-size' element={<ExChangeFontSize/>}></Route>
+        <Route path='use-redux-crud' element={<CRUDProduct/>}></Route>
+
+
+
+
+
+
+
+
+        <Route path='*' element={<Navigate to=''/>}> </Route>
+      </Route>
+    </Routes>
+    </BrowserRouter>
+    </Provider>
+  </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
