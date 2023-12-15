@@ -1,13 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import ChatReducer from "./Reducers/ChatReducer";
-import ChangeFSReducer from "./Reducers/ChangeFSReducer";
-import CRUDProductReducer from "./Reducers/CRUDProductReducer";
+import {configureStore} from '@reduxjs/toolkit'
+import ChatReducer from './Reducers/ChatReducer'
+import FontSizeReducer from './Reducers/FontSizeReducer'
+import CRUDProductReducer from './Reducers/CRUDProductReducer'
 
-export const store = configureStore ({
+export const store = configureStore({
     reducer:{
-        //cac state cua store
-        chatReducer: ChatReducer,
-        changeFSReducer: ChangeFSReducer,
-        crudroductReducer : CRUDProductReducer 
+        //Các state của ứng dụng
+        chatReducer:ChatReducer,
+        fontSizeReducer:FontSizeReducer,
+        crudProductReducer:CRUDProductReducer
     }
 })

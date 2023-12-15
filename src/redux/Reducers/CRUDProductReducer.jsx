@@ -1,10 +1,11 @@
+//rxslice
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    arrProduct: [],
+    arrProduct: [], //state table
     productInfo : {
         id:'',
-        name: '',
+        name:'',
         price:''
     }
 }
@@ -15,7 +16,7 @@ const CRUDProductReducer = createSlice({
   reducers: {
     handleInputProductAction: (state,action) => {
         const {id,value} = action.payload;
-        state.productInfo[id] = value
+        state.productInfo[id] = value;
     }
   }
 });

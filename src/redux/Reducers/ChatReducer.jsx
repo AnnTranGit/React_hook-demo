@@ -1,29 +1,32 @@
+//rxslice
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    arrComment : [
-        {name:'abc', content:'hello you'},
-        {name:'xyz', content:'hello me'},
-
+    arrComment:[
+        {name:'abc',content:'hello cybersoft'},
+        {name:'xyz',content:'hello bc frontend 57'},
     ],
-    userComment : {
+
+    userComment: {
         name:'',
         content:''
     }
 }
 
+
+
 const ChatReducer = createSlice({
-  name: "ChatReducer",
+  name: 'ChatReducer',
   initialState,
   reducers: {
-    updateUserCommentAction : (state,action) => {
-        const{id,value} = action.payload;
+    updateUserCommentAction: (state,action)=>{
+        const {id,value} = action.payload;
         state.userComment[id] = value;
     },
-    addUserCommentAction : (state,action) => {
+    addUserCommentAction: (state,action) => {
         const {payload} = action;
+        console.log('action submit',action);
         state.arrComment.push(payload);
-        console.log('action submit', action);
     }
   }
 });
