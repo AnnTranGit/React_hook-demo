@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes,unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import HomeTemplate from './templates/HomeTemplate';
 import Home from './pages/Home';
 //Cấu hình redux
@@ -28,10 +28,26 @@ import AntDemo from './pages/AntDemo';
 import TableAntd from './pages/TableAntd';
 import ProductManagement from './pages/ProductManagement';
 
+//cấu hình chuyển hướng trang thông qua history
+import {createBrowserHistory} from 'history';
+import DemoHOC from './HOC/DemoHOC';
+import Register from './pages/Register';
+import DemoContainerComponent from './HOC/ContainerComponent/DemoContainerComponent';
+
+
+//history giúp chuyển hướng trang
+export const history = createBrowserHistory()
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+
+
+
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+
+    <HistoryRouter history={history}>
       <Routes>
         <Route path='' element={<HomeTemplate />}>
           <Route index element={<Home />} />
@@ -50,6 +66,7 @@ root.render(
           <Route path='profile' element={<Profile />}></Route>
           <Route path='forgot-pass' element={<ForgotPassword />}></Route>
           <Route path='login' element={<Login />}></Route>
+          {/* <Route path='register' element={<Register/>} ></Route> */}
           <Route path='detail'>
             <Route path=':id' element={<Detail />}></Route>
           </Route>
@@ -58,13 +75,17 @@ root.render(
           <Route path='antd-demo' element={<AntDemo />}></Route>
           <Route path='table-antd' element={<TableAntd />}></Route>
           <Route path='product-management' element={<ProductManagement />}></Route>
+          <Route path='hoc' element={<DemoHOC/>} ></Route>
+          <Route path='container-component' element={<DemoContainerComponent/>} ></Route>
+
+
 
           <Route path='*' element={<Navigate to='' />} ></Route>
 
 
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );
 

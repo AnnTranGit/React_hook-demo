@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-const Home = () => {
+const Home = (props) => {
+  console.log(props);
   const [arrProduct,setArrProduct] = useState([]);
   console.error('arrProduct',arrProduct)
   const getAllProductApi = async ()=>{

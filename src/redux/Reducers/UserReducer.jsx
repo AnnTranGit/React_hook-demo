@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { TOKEN, USER_LOGIN, http } from '../../util/config';
+import { history } from '../..';
 
 //Xử lý load giá trị ban đầu cho state từ storage(localstorage)
 let userLoginDefault = {
@@ -50,24 +51,32 @@ export const loginApiAction = (userLogin) => {
             const action = loginAction(res.data.content)
             dispatch(action)
         }catch (err) {
-            console.log({err})
-            console.log(err.response?.data)
-            console.log(err.request)
-            console.log(err.response?.statusCode)
+            history.push('/login')
+            // console.log({err})
+            // console.log(err.response?.data)
+            // console.log(err.request)
+            // console.log(err.response?.statusCode)
             // if(err.response?.data?.statusCode == 404) {
             //     alert('Tài khoản mật khẩu không đúng!')
             //     window.location.href = '/';
             // }
+            // Promise.reject(err);
         }
 
     }
 }
 export const getProfileApiAction = () => {
+
     return async (dispatch) => {
+        try
+        {
         const res = await http.post('/Users/getProfile');
 
         //Sau khi có được dữ liệu thì dispatch lên reducer
         const action = getProfileAction(res.data.content)
         dispatch(action)
+        }catch(err){
+
+        }
     }
 }

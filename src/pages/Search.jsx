@@ -12,7 +12,7 @@ const Search = () => {
     console.log(arrProduct)
     const formSearch = useFormik({
         initialValues: {
-            keyword: ''
+            keyword: tuKhoa
         },
         onSubmit: ({ keyword }) => {
             console.log(keyword)
@@ -31,6 +31,11 @@ const Search = () => {
         setArrProduct(res.data.content)
     }
     useEffect(() => {
+        
+        // if (tuKhoa == '') {
+        //     tuKhoa = searchParams.get('keyword')
+        // }
+
         getProductByKeyword()
     }, [tuKhoa])
 
@@ -40,7 +45,7 @@ const Search = () => {
                 <div className="input-group mb-3">
                     <button className="input-group-button btn btn-success">Search</button>
                     <div className="form-floating">
-                        <input type="text" className="form-control" id="keyword" placeholder="keyword" name="keyword" onChange={formSearch.handleChange} />
+                        <input type="text" className="form-control" id="keyword" placeholder="keyword" name="keyword" onChange={formSearch.handleChange} value={formSearch.keyword} />
                         <label htmlFor="keyword">search</label>
                     </div>
                 </div>
