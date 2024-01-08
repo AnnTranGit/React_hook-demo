@@ -27,14 +27,12 @@ const ProductManagement = () => {
         //xử lý abc để có dữ liệu và dùng dispatch đưa lên redux
       }
     */
-
-      //Cách 1: Create action thunk (tự code)
-      const action = getAllProductApiAction();
-        dispatch(action)
-
-      //Cách 2 create asynction (thu vien)
-    //   const action = getAllProductAsyncThunkAction();
-    //   dispatch(action)
+    //Cách 1: create action thunk (tự code)
+    const action = getAllProductApiAction();
+    dispatch(action)
+    //Cách 2: create asynction (thư viện)
+    // const action = getAllProductAsyncThunkAction();
+    // dispatch(action);
 
   }
 
@@ -43,7 +41,6 @@ const ProductManagement = () => {
     getAllProduct()
 
   }, [])
-
 
   const handleChange = (pagination, filters, sorter) => {
     console.log('Various parameters', pagination, filters, sorter);

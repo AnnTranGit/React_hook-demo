@@ -3,6 +3,7 @@ import ChatReducer from './Reducers/ChatReducer'
 import FontSizeReducer from './Reducers/FontSizeReducer'
 import CRUDProductReducer from './Reducers/CRUDProductReducer'
 import ProductReducer from './Reducers/ProductReducer'
+import UserReducer from './Reducers/UserReducer'
 
 export const store = configureStore({
     reducer:{
@@ -10,6 +11,7 @@ export const store = configureStore({
         chatReducer:ChatReducer,
         fontSizeReducer:FontSizeReducer,
         crudProductReducer:CRUDProductReducer,
-        productReducer: ProductReducer,
+        productReducer:ProductReducer,
+        userReducer:UserReducer
     }
 })

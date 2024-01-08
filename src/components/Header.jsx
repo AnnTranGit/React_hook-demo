@@ -1,6 +1,10 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 const Header = () => {
+
+    const {userLogin} = useSelector(state =>state.userReducer)
+    console.log(userLogin)
     //bs5-navbar-background
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -12,20 +16,26 @@ const Header = () => {
                         <NavLink className="nav-link active" to="/trang-chu" aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/login">Login</NavLink>
+                        {(()=>{
+                            if (userLogin.email != ''){
+                                return <NavLink className="nav-link" to="/profile">Hello {userLogin.email}</NavLink>
+                            }
+                            return <NavLink className="nav-link" to="/login">Login</NavLink>
+                        })()}
+
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/antd-demo">Antd demo</NavLink>
+                        <NavLink className="nav-link" to="antd-demo">Antd demo</NavLink>
+
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/table-antd">Table Antd</NavLink>
+                        <NavLink className="nav-link" to="/table-antd">Table antd</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/product-management">Product Management</NavLink>
+                        <NavLink className="nav-link" to="/product-management">Product mangement</NavLink>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hooks</a>
-
                         <div className="dropdown-menu" aria-labelledby="dropdownId">
                             <NavLink className="dropdown-item" to="/use-state-demo">UseState</NavLink>
                             <NavLink className="dropdown-item" to="/use-state-change-profile">UseState change profile</NavLink>
@@ -35,6 +45,7 @@ const Header = () => {
                             <NavLink className="dropdown-item" to="/use-callback">Use callback</NavLink>
                             <NavLink className="dropdown-item" to="/use-memo">Use memo</NavLink>
                             <NavLink className="dropdown-item" to="/use-ref">Use ref</NavLink>
+
                             </div>
                     </li>
                     <li className="nav-item dropdown">
